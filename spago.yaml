@@ -1,0 +1,16 @@
+package:
+  dependencies:
+    - effect
+    - either
+    - exceptions
+    - foreign-object
+    - maybe
+    - prelude
+    - record
+    - tuples
+    - web-file
+  name: browser-file-system
+workspace:
+  extraPackages: {}
+  packageSet:
+    registry: 57.0.0

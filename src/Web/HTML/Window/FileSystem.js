@@ -1,10 +1,12 @@
+"use strict";
+
 var fx = function(f) {
 	return function(i) {
 		f(i)();
 	}
 }
 
-exports.showOpenFilePicker_ = function (options) {
+export const showOpenFilePicker_ = function (options) {
 	return function (onerror) {
 		return function (onsuccess) {
 			return function () {
@@ -14,7 +16,7 @@ exports.showOpenFilePicker_ = function (options) {
 	};
 };
 
-exports.showSaveFilePickerBase_ = function (options) {
+export const showSaveFilePickerBase_ = function (options) {
 	return function (onerror) {
 		return function (onsuccess) {
 			return function () {
@@ -24,7 +26,7 @@ exports.showSaveFilePickerBase_ = function (options) {
 	};
 };
 
-exports.showSaveFilePickerFull_ = function (options) {
+export const showSaveFilePickerFull_ = function (options) {
 	return function (onerror) {
 		return function (onsuccess) {
 			return function () {
@@ -34,7 +36,7 @@ exports.showSaveFilePickerFull_ = function (options) {
 	};
 };
 
-exports.showDirectoryPicker = function (onerror) {
+export const showDirectoryPicker = function (onerror) {
 	return function (onsuccess) {
 		return function () {
 			window.showDirectoryPicker().then(fx(onsuccess), fx(onerror));
@@ -42,18 +44,18 @@ exports.showDirectoryPicker = function (onerror) {
 	};
 };
 
-exports.kind_FileSystemFileHandle = function (fsh) {
+export const kind_FileSystemFileHandle = function (fsh) {
 	return function () {
 		return fsh.kind;
 	};
 };
 
-exports.name_FileSystemFileHandle = function (fsh) {
+export const name_FileSystemFileHandle = function (fsh) {
 	return function () {
 		return fsh.name;
 	};
 };
-exports.isSameEntry_FileSystemFileHandle = function (fsh1) {
+export const isSameEntry_FileSystemFileHandle = function (fsh1) {
 	return function (fsh2) {
 		return function () {
 			return fsh1.isSameEntry(fsh2);
@@ -61,7 +63,7 @@ exports.isSameEntry_FileSystemFileHandle = function (fsh1) {
 	};
 };
 
-exports.queryPermission_FileSystemFileHandle = function (fsh) {
+export const queryPermission_FileSystemFileHandle = function (fsh) {
 	return function (options) {
 		return function (onerror) {
 			return function (onsuccess) {
@@ -73,7 +75,7 @@ exports.queryPermission_FileSystemFileHandle = function (fsh) {
 	};
 };
 
-exports.requestPermission_FileSystemFileHandle = function (fsh) {
+export const requestPermission_FileSystemFileHandle = function (fsh) {
 	return function (options) {
 		return function (onerror) {
 			return function (onsuccess) {
@@ -85,18 +87,18 @@ exports.requestPermission_FileSystemFileHandle = function (fsh) {
 	};
 };
 
-exports.kind_FileSystemDirectoryHandle = function (fsh) {
+export const kind_FileSystemDirectoryHandle = function (fsh) {
 	return function () {
 		return fsh.kind;
 	};
 };
 
-exports.name_FileSystemDirectoryHandle = function (fsh) {
+export const name_FileSystemDirectoryHandle = function (fsh) {
 	return function () {
 		return fsh.name;
 	};
 };
-exports.isSameEntry_FileSystemDirectoryHandle = function (fsh1) {
+export const isSameEntry_FileSystemDirectoryHandle = function (fsh1) {
 	return function (fsh2) {
 		return function () {
 			return fsh1.isSameEntry(fsh2);
@@ -104,7 +106,7 @@ exports.isSameEntry_FileSystemDirectoryHandle = function (fsh1) {
 	};
 };
 
-exports.queryPermission_FileSystemDirectoryHandle = function (fsh) {
+export const queryPermission_FileSystemDirectoryHandle = function (fsh) {
 	return function (options) {
 		return function (onerror) {
 			return function (onsuccess) {
@@ -116,7 +118,7 @@ exports.queryPermission_FileSystemDirectoryHandle = function (fsh) {
 	};
 };
 
-exports.requestPermission_FileSystemDirectoryHandle = function (fsh) {
+export const requestPermission_FileSystemDirectoryHandle = function (fsh) {
 	return function (options) {
 		return function (onerror) {
 			return function (onsuccess) {
@@ -128,7 +130,7 @@ exports.requestPermission_FileSystemDirectoryHandle = function (fsh) {
 	};
 };
 
-exports.getFile = function (fsh) {
+export const getFile = function (fsh) {
 	return function (onerror) {
 		return function (onsuccess) {
 			return function () {
@@ -138,7 +140,7 @@ exports.getFile = function (fsh) {
 	};
 };
 
-exports.entries_ = function (makeFSFH) {
+export const entries_ = function (makeFSFH) {
 	return function (makeFSDH) {
 		return function (makeTP) {
 			return function (fsh) {
@@ -178,7 +180,7 @@ exports.entries_ = function (makeFSFH) {
 	};
 };
 
-exports.createWritable = function (fsh) {
+export const createWritable = function (fsh) {
 	return function (onerror) {
 		return function (onsuccess) {
 			return function () {
@@ -188,7 +190,7 @@ exports.createWritable = function (fsh) {
 	};
 };
 
-exports.getFileHandle = function (fsh) {
+export const getFileHandle = function (fsh) {
 	return function (name) {
 		return function (options) {
 			return function (onerror) {
@@ -202,7 +204,7 @@ exports.getFileHandle = function (fsh) {
 	};
 };
 
-exports.getDirectoryHandle = function (fsh) {
+export const getDirectoryHandle = function (fsh) {
 	return function (name) {
 		return function (options) {
 			return function (onerror) {
