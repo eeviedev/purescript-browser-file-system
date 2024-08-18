@@ -206,7 +206,7 @@ type ShowOpenFilePickerOptional =
         { description :: Maybe String
         , accept :: Object (Array String)
         }
-  , startIn :: Either FileSystemDirectoryHandle String
+  , startIn :: Maybe FileSystemDirectoryHandle
   )
 
 type ShowOpenFilePickerAll = (| ShowOpenFilePickerOptional)
@@ -216,7 +216,7 @@ defaultShowOpenFilePickerOptions =
   { multiple: false
   , excludeAcceptAllOption: false
   , types: []
-  , startIn: Right "documents"
+  , startIn: Nothing
   }
 
 foreign import showOpenFilePicker_
