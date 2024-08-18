@@ -4,7 +4,6 @@ module Web.HTML.Window.FileSystem
   , FileSystemFileHandle(..)
   , Permission(..)
   , RRW(..)
-  , ShowOpenFilePickerAll
   , ShowOpenFilePickerOptional
   , ShowSaveFilePickerAll
   , ShowSaveFilePickerBase
@@ -206,37 +205,34 @@ type ShowOpenFilePickerOptional =
         { description :: Maybe String
         , accept :: Object (Array String)
         }
-  , startIn :: Maybe FileSystemDirectoryHandle
   )
-
-type ShowOpenFilePickerAll = (| ShowOpenFilePickerOptional)
 
 defaultShowOpenFilePickerOptions :: { | ShowOpenFilePickerOptional }
 defaultShowOpenFilePickerOptions =
   { multiple: false
   , excludeAcceptAllOption: false
   , types: []
-  , startIn: Nothing
   }
 
 foreign import showOpenFilePicker_
-  :: { | ShowOpenFilePickerOptional }
+  :: forall all
+   . { | all }
   -> (Error -> Effect Unit)
   -> (Array FileSystemFileHandle -> Effect Unit)
   -> Effect Unit
 
 showOpenFilePicker
-  :: forall provided
+  :: forall provided all
    . Defaults { | ShowOpenFilePickerOptional }
        { | provided }
-       { | ShowOpenFilePickerAll }
+       { | all }
   => { | provided }
   -> (Error -> Effect Unit)
   -> (Array FileSystemFileHandle -> Effect Unit)
   -> Effect Unit
 showOpenFilePicker provided = showOpenFilePicker_ all
   where
-  all :: { | ShowOpenFilePickerAll }
+  all :: { | all }
   all = defaults defaultShowOpenFilePickerOptions provided
 
 --
